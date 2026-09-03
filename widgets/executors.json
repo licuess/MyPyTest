@@ -1,1 +1,1 @@
-[{"name":"Jenkins","type":"jenkins","url":"http://localhost:8080/","buildOrder":14,"buildName":"MyPyTest #14","buildUrl":"http://localhost:8080/job/MyPyTest/14/display/redirect","reportName":"AllureReport","reportUrl":"http://localhost:8080/job/MyPyTest/14/allure"}]
+[{"name":"Jenkins","type":"jenkins","url":"http://localhost:8080/","buildOrder":15,"buildName":"MyPyTest #15","buildUrl":"http://localhost:8080/job/MyPyTest/15/display/redirect","reportName":"AllureReport","reportUrl":"http://localhost:8080/job/MyPyTest/15/allure"}]
