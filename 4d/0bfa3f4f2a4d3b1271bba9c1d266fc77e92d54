@@ -1,0 +1,148 @@
+.gitignore
+  h_b23a6a8439c0dd 1-4
+.github/workflows/test.yml
+  h_b23a6a8439c0dd 1-56
+test_smaple.py
+  h_b23a6a8439c0dd 1-36
+pyproject.toml
+  h_b23a6a8439c0dd 1-5
+  h_882716a89a2f50 6-12
+.idea/.gitignore
+  h_882716a89a2f50 1-10
+.idea/inspectionProfiles/profiles_settings.xml
+  h_882716a89a2f50 1-6
+.idea/misc.xml
+  h_882716a89a2f50 1-4
+.idea/modules.xml
+  h_882716a89a2f50 1-8
+.idea/mypytest.iml
+  h_882716a89a2f50 1-10
+.idea/pyLspTools.xml
+  h_882716a89a2f50 1-51
+.idea/vcs.xml
+  h_882716a89a2f50 1-6
+allure-report/assets/index-CqG5t6J2.js
+  h_882716a89a2f50 1-62
+allure-report/data/attachments/9cfcd2ad48df4ca8.txt
+  h_882716a89a2f50 1
+allure-report/data/attachments/cd3e5650e510db95.txt
+  h_882716a89a2f50 1
+allure-report/data/behaviors.csv
+  h_882716a89a2f50 1-2
+allure-report/data/behaviors.json
+  h_882716a89a2f50 1
+allure-report/data/categories.json
+  h_882716a89a2f50 1
+allure-report/data/packages.json
+  h_882716a89a2f50 1
+allure-report/data/suites.csv
+  h_882716a89a2f50 1-2
+allure-report/data/suites.json
+  h_882716a89a2f50 1
+allure-report/data/test-cases/6aeb602d3a532a29.json
+  h_882716a89a2f50 1
+allure-report/data/timeline.json
+  h_882716a89a2f50 1
+allure-report/export/influxDbData.txt
+  h_882716a89a2f50 1-13
+allure-report/export/mail.html
+  h_882716a89a2f50 1-10
+allure-report/export/prometheusData.txt
+  h_882716a89a2f50 1-13
+allure-report/history/categories-trend.json
+  h_882716a89a2f50 1
+allure-report/history/duration-trend.json
+  h_882716a89a2f50 1
+allure-report/history/history-trend.json
+  h_882716a89a2f50 1
+allure-report/history/history.json
+  h_882716a89a2f50 1
+allure-report/history/retry-trend.json
+  h_882716a89a2f50 1
+allure-report/index.html
+  h_882716a89a2f50 1-45
+allure-report/widgets/behaviors.json
+  h_882716a89a2f50 1
+allure-report/widgets/categories-trend.json
+  h_882716a89a2f50 1
+allure-report/widgets/categories.json
+  h_882716a89a2f50 1
+allure-report/widgets/duration-trend.json
+  h_882716a89a2f50 1
+allure-report/widgets/duration.json
+  h_882716a89a2f50 1
+allure-report/widgets/environment.json
+  h_882716a89a2f50 1
+allure-report/widgets/executors.json
+  h_882716a89a2f50 1
+allure-report/widgets/globals.json
+  h_882716a89a2f50 1
+allure-report/widgets/history-trend.json
+  h_882716a89a2f50 1
+allure-report/widgets/launch.json
+  h_882716a89a2f50 1
+allure-report/widgets/retry-trend.json
+  h_882716a89a2f50 1
+allure-report/widgets/severity.json
+  h_882716a89a2f50 1
+allure-report/widgets/status-chart.json
+  h_882716a89a2f50 1
+allure-report/widgets/suites.json
+  h_882716a89a2f50 1
+allure-report/widgets/summary.json
+  h_882716a89a2f50 1
+allure-results/b9f08088-01e3-43e4-a39c-9aeec31e25c4-result.json
+  h_882716a89a2f50 1
+allure-results/bdc4a81c-0030-421c-843e-8e12bd8dbb93-attachment.txt
+  h_882716a89a2f50 1
+allure-results/dd2c656a-0fda-450a-82fb-df09452da544-attachment.txt
+  h_882716a89a2f50 1
+allure/bin/allure
+  h_882716a89a2f50 1-250
+allure/bin/allure.bat
+  h_882716a89a2f50 1-83
+allure/config/allure-junit.yml
+  h_882716a89a2f50 1-3
+allure/config/allure.yml
+  h_882716a89a2f50 1-10
+allure/lib/config/jetty-logging.properties
+  h_882716a89a2f50 1-2
+allure/plugins/README.txt
+  h_882716a89a2f50 1
+allure/plugins/behaviors-plugin/allure-plugin.yml
+  h_882716a89a2f50 1-5
+allure/plugins/custom-logo-plugin/allure-plugin.yml
+  h_882716a89a2f50 1-5
+allure/plugins/custom-logo-plugin/static/styles.css
+  h_882716a89a2f50 1-4
+allure/plugins/jira-plugin/allure-plugin.yml
+  h_882716a89a2f50 1-5
+allure/plugins/junit-xml-plugin/allure-plugin.yml
+  h_882716a89a2f50 1-5
+allure/plugins/packages-plugin/allure-plugin.yml
+  h_882716a89a2f50 1-5
+allure/plugins/screen-diff-plugin/allure-plugin.yml
+  h_882716a89a2f50 1-3
+allure/plugins/trx-plugin/allure-plugin.yml
+  h_882716a89a2f50 1-5
+allure/plugins/xctest-plugin/allure-plugin.yml
+  h_882716a89a2f50 1-5
+allure/plugins/xray-plugin/allure-plugin.yml
+  h_882716a89a2f50 1-5
+allure/plugins/xunit-xml-plugin/allure-plugin.yml
+  h_882716a89a2f50 1-5
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.0",
+  "base_commit_sha": "4d0bfa3f4f2a4d3b1271bba9c1d266fc77e92d54",
+  "prompts": {},
+  "humans": {
+    "h_882716a89a2f50": {
+      "author": "licuess <licuess@gmail.com>"
+    },
+    "h_b23a6a8439c0dd": {
+      "author": "unknown"
+    }
+  }
+}
