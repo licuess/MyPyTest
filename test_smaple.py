@@ -1,9 +1,9 @@
 import allure
 
+
 @allure.epic("用户登录功能测试")
 @allure.feature("登录模块")
 class TestLogin:
-
     @allure.story("正常登录")
     @allure.title("使用正确的用户名和密码登录")
     @allure.severity(allure.severity_level.BLOCKER)
@@ -34,12 +34,11 @@ class TestLogin:
             pass
         with allure.step("验证登录失败提示"):
             assert True  # 断言出现错误提示
-            
-            
+
+
 @allure.epic("用户注册功能测试")
 @allure.feature("注册模块")
 class TestRegister:
-
     @allure.story("正常注册")
     @allure.title("使用正确的用户名和密码注册")
     @allure.severity(allure.severity_level.BLOCKER)
