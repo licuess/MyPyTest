@@ -1,0 +1,14 @@
+test_smaple.py
+  h_882716a89a2f50 36-71
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.0",
+  "base_commit_sha": "d32cea400d15fe524c6806b45c0c1469a322032d",
+  "prompts": {},
+  "humans": {
+    "h_882716a89a2f50": {
+      "author": "licuess <licuess@gmail.com>"
+    }
+  }
+}
