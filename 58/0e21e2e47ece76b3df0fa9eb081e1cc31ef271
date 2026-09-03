@@ -1,0 +1,17 @@
+Jenkinsfile
+  h_882716a89a2f50 13,23,29,34,40,45-52,57,64,67,76-77,79-82,87,91,97,102-103,105-117,120-123,126-129,136-137
+  h_882716a89a2f50 19,78
+uv.lock
+  h_882716a89a2f50 1-114
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.0",
+  "base_commit_sha": "580e21e2e47ece76b3df0fa9eb081e1cc31ef271",
+  "prompts": {},
+  "humans": {
+    "h_882716a89a2f50": {
+      "author": "licuess <licuess@gmail.com>"
+    }
+  }
+}
