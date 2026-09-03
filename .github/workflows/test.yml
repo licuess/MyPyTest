@@ -41,16 +41,32 @@ jobs:
           name: allure-results
           path: allure-results
 
-      # 7.安装 Allure 命令行工具 (Linux环境)
+      # 7. 安装 Allure 命令行工具 (Linux环境)
       - name: Install Allure CLI
         run: |
+          # 安装 Java 环境
           sudo apt-get update
           sudo apt-get install -y default-jre
+          
+          # 下载并解压 Allure
           curl -o allure.tar.gz -L https://github.com/allure-framework/allure2/releases/download/2.31.0/allure-2.31.0.tgz
-          tar -zxvf allure.tar.gz -C /opt/
-          sudo ln -s /opt/allure-2.31.0/bin/allure /usr/bin/allure
+          sudo mkdir -p /opt/allure
+          sudo tar -zxvf allure.tar.gz -C /opt/allure --strip-components=1
+          
+          # 配置环境变量 (可选，如果软链接生效则不需要)
+          echo "/opt/allure/bin" >> $GITHUB_PATH
 
-      # 8.生成 Allure HTML 报告
+      # 8. 生成 Allure HTML 报告
       - name: Generate Allure Report
         if: always()
-        run: uv run allure generate allure-results -o allure-report --clean
+        run: |
+          # 直接使用 allure 命令，不要用 uv run
+          allure generate allure-results -o allure-report --clean
+          
+          # 可选：将生成的报告也上传为产物，方便查看
+      - name: Upload Allure Report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: allure-report
+          path: allure-report
