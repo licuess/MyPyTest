@@ -1,0 +1,17 @@
+Jenkinsfile
+  h_882716a89a2f50 3,7,12-13,18,22-25,29,32,34,37-40
+  h_882716a89a2f50 26-27,43
+.idea/mypytest.iml
+  h_882716a89a2f50 5
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.0",
+  "base_commit_sha": "22a3323f7d0b07f4e247be46fb5629c7a0dc4188",
+  "prompts": {},
+  "humans": {
+    "h_882716a89a2f50": {
+      "author": "licuess <licuess@gmail.com>"
+    }
+  }
+}
