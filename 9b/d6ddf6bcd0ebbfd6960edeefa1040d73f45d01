@@ -1,0 +1,17 @@
+.github/workflows/ci.yml
+  h_882716a89a2f50 1-78
+Jenkinsfile
+  h_882716a89a2f50 22,32,52,73,91-96,98-109,115-125,132
+  h_882716a89a2f50 18,84-90,110-114,126-131
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.0",
+  "base_commit_sha": "9bd6ddf6bcd0ebbfd6960edeefa1040d73f45d01",
+  "prompts": {},
+  "humans": {
+    "h_882716a89a2f50": {
+      "author": "licuess <licuess@gmail.com>"
+    }
+  }
+}
