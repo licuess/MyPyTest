@@ -8,3 +8,4 @@ uv.lock
 # Allure 报告（忽略生成的报告，只保留测试源码）
 allure-results/
 allure-report/
+allure.*
