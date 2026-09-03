@@ -1,1 +1,1 @@
-[{"data":{"duration":4}}]
+[{"buildOrder":14,"reportUrl":"http://localhost:8080/job/MyPyTest/14/allure","reportName":"AllureReport","data":{"duration":1}},{"buildOrder":13,"reportUrl":"http://localhost:8080/job/MyPyTest/13/allure","reportName":"AllureReport","data":{"duration":2}}]
