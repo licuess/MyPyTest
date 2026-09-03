@@ -1,0 +1,20 @@
+.gitignore
+  h_882716a89a2f50 11
+  h_882716a89a2f50 10
+.github/workflows/test.yml
+  h_882716a89a2f50 56,65-66
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.0",
+  "base_commit_sha": "8deb1a7e705899b47933f52bb97e852c73d7ce0e",
+  "prompts": {},
+  "humans": {
+    "h_882716a89a2f50": {
+      "author": "licuess <licuess@gmail.com>"
+    },
+    "h_b23a6a8439c0dd": {
+      "author": "unknown"
+    }
+  }
+}
