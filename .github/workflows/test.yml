@@ -2,9 +2,9 @@ name: MyPyTest CI Pipeline
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "master" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "master" ]
 
 jobs:
   test:
@@ -51,7 +51,7 @@ jobs:
 
       # 8. 【关键】自动部署报告到 GitHub Pages
       - name: Deploy to GitHub Pages
-        if: github.ref == 'refs/heads/main' # 只有 main 分支推送时才部署
+        if: github.ref == 'refs/heads/master' # 只有 master 分支推送时才部署
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}

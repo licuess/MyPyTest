@@ -44,10 +44,10 @@ pipeline {
             allure results: [[path: 'allure-results']]
         }
 
-        // 仅在 main 分支构建成功时，自动部署报告到 GitHub Pages
+        // 仅在 master 分支构建成功时，自动部署报告到 GitHub Pages
         success {
             script {
-                if (env.BRANCH_NAME == 'main') {
+                if (env.BRANCH_NAME == 'master') {
                     echo '正在将 Allure 报告部署到 gh-pages 分支...'
                     sh '''
                         # 配置 Git 用户信息
