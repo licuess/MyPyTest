@@ -1,0 +1,16 @@
+.github/workflows/test.yml
+  h_882716a89a2f50 5,7,54
+Jenkinsfile
+  h_882716a89a2f50 47,50
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.0",
+  "base_commit_sha": "f8ebb7c7b1af8aef679f93ec5298b9e6935258d0",
+  "prompts": {},
+  "humans": {
+    "h_882716a89a2f50": {
+      "author": "licuess <licuess@gmail.com>"
+    }
+  }
+}
