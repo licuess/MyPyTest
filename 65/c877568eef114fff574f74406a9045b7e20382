@@ -1,0 +1,15 @@
+Jenkinsfile
+  h_882716a89a2f50 4-11,16-18,22,24-27,32,35-42,47,50-57,70-101
+  h_882716a89a2f50 19-20
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.0",
+  "base_commit_sha": "65c877568eef114fff574f74406a9045b7e20382",
+  "prompts": {},
+  "humans": {
+    "h_882716a89a2f50": {
+      "author": "licuess <licuess@gmail.com>"
+    }
+  }
+}
