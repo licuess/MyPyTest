@@ -1,4 +1,10 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+uv.lock
 
-./allure-report
-./.idea
-.venv
+# Allure 报告（忽略生成的报告，只保留测试源码）
+allure-results/
+allure-report/
