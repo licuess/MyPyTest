@@ -1,74 +1,104 @@
 pipeline {
     agent any
 
-    // 配置 Allure 插件，名称需与 Jenkins 全局工具配置中的名称一致
+    options {
+        skipDefaultCheckout(true)
+        timestamps()
+        timeout(time: 20, unit: 'MINUTES')
+        disableConcurrentBuilds()
+        buildDiscarder(logRotator(numToKeepStr: '20'))
+    }
+
     tools {
         allure 'allure-cli'
     }
 
+    environment {
+        DEPLOY_BRANCH = 'master'
+        UV_CACHE_DIR = "${WORKSPACE}/.uv-cache"
+    }
+
     stages {
-        stage('1. 拉取代码 (Checkout)') {
+        stage('拉取代码') {
             steps {
-                echo "正在拉取分支 ${BRANCH_NAME} 的代码..."
+                script {
+                    def branch = env.BRANCH_NAME ?: env.DEPLOY_BRANCH
+                    echo "正在拉取 ${branch} 分支代码..."
+                }
                 checkout scm
             }
         }
 
-        stage('2. 安装 uv 和同步依赖') {
+        stage('同步 Python 依赖') {
             steps {
-                // 自动安装 uv 包管理器
-                sh 'curl -LsSf https://astral.sh/uv/install.sh | sh'
-
-                // 确保 uv 在 PATH 中，并同步安装 pyproject.toml 中的依赖
                 sh '''
-                    export PATH="$HOME/.cargo/bin:$PATH"
-                    uv sync
+                    set -eu
+
+                    if ! command -v uv >/dev/null 2>&1; then
+                        curl -LsSf https://astral.sh/uv/install.sh | sh
+                    fi
+
+                    export PATH="$HOME/.local/bin:$HOME/.cargo/bin:$PATH"
+                    uv sync --frozen
                 '''
             }
         }
 
-        stage('3. 运行 Pytest 测试') {
+        stage('执行 Pytest 并生成 Allure 结果') {
             steps {
-                // 在 uv 的虚拟环境中运行测试，并生成 allure-results 目录
                 sh '''
-                    export PATH="$HOME/.cargo/bin:$PATH"
-                    uv run pytest --alluredir=allure-results
+                    set -eu
+                    export PATH="$HOME/.local/bin:$HOME/.cargo/bin:$PATH"
+
+                    rm -rf allure-results allure-report
+                    uv run pytest -v --alluredir=allure-results
+
+                    # 没有生成测试结果时直接失败，避免产生“0 test cases”的空报告
+                    find allure-results -name '*-result.json' -print -quit | grep -q .
                 '''
             }
         }
     }
 
     post {
-        // 无论成功或失败，都会生成 Allure 报告
         always {
             allure results: [[path: 'allure-results']]
         }
 
-        // 仅在 master 分支构建成功时，自动部署报告到 GitHub Pages
         success {
             script {
-                if (env.BRANCH_NAME == 'master') {
-                    echo '正在将 Allure 报告部署到 gh-pages 分支...'
-                    sh '''
-                        # 配置 Git 用户信息
-                        git config --global user.email "actions@github.com"
-                        git config --global user.name "Jenkins Bot"
+                def branch = env.BRANCH_NAME ?: env.DEPLOY_BRANCH
 
-                        # 切换到或创建 gh-pages 分支，并清空历史
-                        git checkout --orphan gh-pages || git checkout gh-pages
-                        git rm -rf . || true
+                if (branch == env.DEPLOY_BRANCH) {
+                    echo '正在部署 Allure 报告到 gh-pages...'
 
-                        # 将生成的报告复制到 gh-pages
-                        cp -R allure-report/* ./
+                    withCredentials([
+                        string(credentialsId: 'git-author-name', variable: 'GIT_AUTHOR_NAME'),
+                        string(credentialsId: 'git-author-email', variable: 'GIT_AUTHOR_EMAIL')
+                    ]) {
+                        sshagent(credentials: ['9cc8c7e3-03dd-44a3-be28-3a53e8fd4b77']) {
+                            sh '''
+                                set -eu
 
-                        # 提交并推送到 GitHub
-                        git add .
-                        git commit -m "Jenkins: 部署最新的 Allure 测试报告"
+                                test -d allure-report
 
-                        # 使用 Jenkins 中配置的凭证推送
-                        git push origin gh-pages --force
-                    '''
-                    echo '部署成功！'
+                                git config user.name "$GIT_AUTHOR_NAME"
+                                git config user.email "$GIT_AUTHOR_EMAIL"
+
+                                git checkout --orphan gh-pages || git checkout gh-pages
+                                git rm -rf . || true
+                                cp -a allure-report/. .
+
+                                git add .
+                                if ! git diff --cached --quiet; then
+                                    git commit -m "Jenkins: deploy Allure report #${BUILD_NUMBER}"
+                                    git push origin HEAD:gh-pages --force
+                                else
+                                    echo "报告内容没有变化，跳过提交。"
+                                fi
+                            '''
+                        }
+                    }
                 }
             }
         }
