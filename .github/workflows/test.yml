@@ -33,40 +33,27 @@ jobs:
       - name: Run Pytest with Allure
         run: uv run pytest --alluredir=allure-results
 
-      # 6. 将 Allure 原始数据上传为 GitHub 构建产物
-      - name: Upload Allure Results
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: allure-results
-          path: allure-results
-
-      # 7. 安装 Allure 命令行工具 (Linux环境)
+      # 6. 安装 Allure CLI (生成报告前必须先装它)
       - name: Install Allure CLI
         run: |
-          # 安装 Java 环境
           sudo apt-get update
           sudo apt-get install -y default-jre
-          
-          # 下载并解压 Allure
           curl -o allure.tar.gz -L https://github.com/allure-framework/allure2/releases/download/2.31.0/allure-2.31.0.tgz
           sudo mkdir -p /opt/allure
           sudo tar -zxvf allure.tar.gz -C /opt/allure --strip-components=1
-          
-          # 配置环境变量
           echo "/opt/allure/bin" >> $GITHUB_PATH
 
-      # 8. 生成 Allure HTML 报告
+      # 7. 生成 Allure HTML 报告
       - name: Generate Allure Report
         if: always()
         run: |
-          # 直接使用 allure 命令，不要用 uv run
           allure generate allure-results -o allure-report --clean
 
-      # 9. 将生成的 HTML 报告也上传为产物
-      - name: Upload Allure Report
-        if: always()
-        uses: actions/upload-artifact@v4
+      # 8. 【关键】自动部署报告到 GitHub Pages
+      - name: Deploy to GitHub Pages
+        if: github.ref == 'refs/heads/main' # 只有 main 分支推送时才部署
+        uses: peaceiris/actions-gh-pages@v4
         with:
-          name: allure-report
-          path: allure-report
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./allure-report
+          force_orphan: true
